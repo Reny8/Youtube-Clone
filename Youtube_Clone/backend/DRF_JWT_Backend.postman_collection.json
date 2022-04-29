@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d4409d57-7119-4339-bfae-1f3a18bc6341",
+		"_postman_id": "6f04fa80-8c36-4999-8457-aefd4cd51b6d",
 		"name": "DRF_JWT_Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"dan@devcodecamp.com\",\r\n    \"first_name\": \"Daniel\",\r\n    \"last_name\": \"Tulpa\"\r\n}",
+							"raw": "{\r\n    \"username\": \"renyreyes\",\r\n    \"password\": \"hello111\",\r\n    \"email\": \"renyreyes8@hotmail.com\",\r\n    \"first_name\": \"Reny\",\r\n    \"last_name\": \"Reyes\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\"\r\n}",
+							"raw": "{\r\n    \"username\": \"renyreyes\",\r\n    \"password\": \"hello111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,11 +79,21 @@
 				{
 					"name": "Refresh_Access",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTM0MTc2LCJpYXQiOjE2NTEyNzAxNzYsImp0aSI6IjAyZjgyMGRkODMzOTRkY2FiZmQ0OGYyOTgwYThhMTFhIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJyZW55cmV5ZXMiLCJmaXJzdF9uYW1lIjoiUmVueSJ9.QDAT9HjHxBsd3tJcu5NEckBn1Jd8jKv23vNJKBCE6SI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"refresh\": \"PASTE REFRESH TOKEN FROM LOGIN HERE\"\r\n}",
+							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1Mjk5ODE3NiwiaWF0IjoxNjUxMjcwMTc2LCJqdGkiOiIyODhiYjRjYTI1OWY0NDY5YjIwYzE5ZjdhYmRkYTYyOSIsInVzZXJfaWQiOjMsInVzZXJuYW1lIjoicmVueXJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.FOn3vNxIA1PCCmxCs-id9Yd3h3c6R2tihx213wBTRJc\",\r\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTMwMzE5LCJpYXQiOjE2NTEyNjYzMTksImp0aSI6ImIzYmFkYmM3YjgxNDRhMDdhMTZmMmUwMjUzMTdlNjc2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJyZW55LnJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.gtC4srMPGBGKco3KtO9MzFmSL59A30ZiIdaSQX_Ebb8\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,6 +157,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTMwMzE5LCJpYXQiOjE2NTEyNjYzMTksImp0aSI6ImIzYmFkYmM3YjgxNDRhMDdhMTZmMmUwMjUzMTdlNjc2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJyZW55LnJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.gtC4srMPGBGKco3KtO9MzFmSL59A30ZiIdaSQX_Ebb8",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -216,6 +236,70 @@
 							"path": [
 								"api",
 								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Comment_By_Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTM0MTc2LCJpYXQiOjE2NTEyNzAxNzYsImp0aSI6IjAyZjgyMGRkODMzOTRkY2FiZmQ0OGYyOTgwYThhMTFhIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJyZW55cmV5ZXMiLCJmaXJzdF9uYW1lIjoiUmVueSJ9.QDAT9HjHxBsd3tJcu5NEckBn1Jd8jKv23vNJKBCE6SI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1",
 								""
 							]
 						}
