@@ -6,4 +6,4 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = [
             'id','user','video_id','text','likes','dislikes'
         ]
-        depth = 1
+        
