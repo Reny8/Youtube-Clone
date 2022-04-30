@@ -23,3 +23,8 @@ def comments_details(request, pk):
     if request.method == "GET":
         serializer = CommentSerializer(comment)
         return Response(serializer.data, status= status.HTTP_200_OK)
+    elif request.method == "POST":
+        serializer = CommentSerializer(data = request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data,status.HTTP_201_CREATED)

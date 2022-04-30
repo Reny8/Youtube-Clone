@@ -84,7 +84,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTM0MTc2LCJpYXQiOjE2NTEyNzAxNzYsImp0aSI6IjAyZjgyMGRkODMzOTRkY2FiZmQ0OGYyOTgwYThhMTFhIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJyZW55cmV5ZXMiLCJmaXJzdF9uYW1lIjoiUmVueSJ9.QDAT9HjHxBsd3tJcu5NEckBn1Jd8jKv23vNJKBCE6SI",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMjAzNTMyLCJpYXQiOjE2NTEzMzk1MzIsImp0aSI6ImI0OGEyZmU1ZmE0YjRkYThhMjliMmE5NjYzYjQ4Y2NjIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJyZW55cmV5ZXMiLCJmaXJzdF9uYW1lIjoiUmVueSJ9.B_tE8hNPWYw_kUxzODBaf_xqtRWmB27FzMJjC7k09GM",
 									"type": "string"
 								}
 							]
@@ -93,7 +93,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1Mjk5ODE3NiwiaWF0IjoxNjUxMjcwMTc2LCJqdGkiOiIyODhiYjRjYTI1OWY0NDY5YjIwYzE5ZjdhYmRkYTYyOSIsInVzZXJfaWQiOjMsInVzZXJuYW1lIjoicmVueXJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.FOn3vNxIA1PCCmxCs-id9Yd3h3c6R2tihx213wBTRJc\",\r\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTMwMzE5LCJpYXQiOjE2NTEyNjYzMTksImp0aSI6ImIzYmFkYmM3YjgxNDRhMDdhMTZmMmUwMjUzMTdlNjc2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJyZW55LnJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.gtC4srMPGBGKco3KtO9MzFmSL59A30ZiIdaSQX_Ebb8\"\r\n}",
+							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1MzA2NzUzMiwiaWF0IjoxNjUxMzM5NTMyLCJqdGkiOiJkYjMxODQ3YTdlOGQ0ZDBiODdmZjgyOTIzYzY0YTBlNyIsInVzZXJfaWQiOjMsInVzZXJuYW1lIjoicmVueXJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.7XpREhVni0xMFpQPWPXhvYFyW5oenu1SvSTcKNPJaA8\",\r\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMTMwMzE5LCJpYXQiOjE2NTEyNjYzMTksImp0aSI6ImIzYmFkYmM3YjgxNDRhMDdhMTZmMmUwMjUzMTdlNjc2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJyZW55LnJleWVzIiwiZmlyc3RfbmFtZSI6IlJlbnkifQ.gtC4srMPGBGKco3KtO9MzFmSL59A30ZiIdaSQX_Ebb8\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,7 +248,7 @@
 			"name": "Comment",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Get_All_Comments",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -286,6 +286,50 @@
 						},
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUyMjAzNTMyLCJpYXQiOjE2NTEzMzk1MzIsImp0aSI6ImI0OGEyZmU1ZmE0YjRkYThhMjliMmE5NjYzYjQ4Y2NjIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJyZW55cmV5ZXMiLCJmaXJzdF9uYW1lIjoiUmVueSJ9.B_tE8hNPWYw_kUxzODBaf_xqtRWmB27FzMJjC7k09GM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": 3,\r\n    \"video_id\": \"https://youtu.be/zFXMOfFzoRc\",\r\n    \"text\": \"Such a great video!\",\r\n    \"likes\": 3,\r\n    \"dislikes\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/comments/1/",
 							"protocol": "http",
