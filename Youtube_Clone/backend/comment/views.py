@@ -16,7 +16,7 @@ def get_all_comments(request):
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def comments_details(request, pk):
     comment = get_object_or_404(Comment,pk=pk)
@@ -28,3 +28,8 @@ def comments_details(request, pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data,status.HTTP_201_CREATED)
+    elif request.method == "PUT":
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
