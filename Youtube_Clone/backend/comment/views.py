@@ -21,22 +21,27 @@ def get_all_comments(request):
 @api_view(['GET', 'POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def comments_details(request, pk):
+    comment = get_object_or_404(Comment,pk=pk)
     if request.method == "GET":
-        comment = get_object_or_404(Comment,pk=pk)
         reply = Reply.objects.filter(comment_id = comment.id)
         serializer = ReplySerializer(reply, many=True)
         return Response(serializer.data, status= status.HTTP_200_OK)
 
+    elif request.method == "PUT":
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
     elif request.method == "POST":
-        comment = get_object_or_404(Comment,pk=pk)
+    
         serializer = ReplySerializer(data = request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data,status.HTTP_201_CREATED)
 
-    elif request.method == "PUT":
-        comment = get_object_or_404(Comment,pk=pk)
-        serializer = CommentSerializer(comment, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
+    # elif request.method == "POST":
+    #     serializer = ReplySerializer(data = request.data)
+    #     if serializer.is_valid(raise_exception=True):
+    #         serializer.save()
+    #         return Response(serializer.data,status.HTTP_201_CREATED)
