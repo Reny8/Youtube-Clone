@@ -35,5 +35,5 @@ def comments_details(request, pk):
     if request.method == "PUT":
         serializer = CommentSerializer(comment, data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            serializer.save(user = request.user)
             return Response(serializer.data, status=status.HTTP_200_OK)
