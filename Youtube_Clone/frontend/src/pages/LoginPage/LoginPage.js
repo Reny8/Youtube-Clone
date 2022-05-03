@@ -19,13 +19,15 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <form className="form" onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <label>
           Username:{" "}
           <input
             type="text"
             name="username"
+            className="form-control"
             value={formData.username}
             onChange={handleInputChange}
           />
@@ -35,6 +37,7 @@ const LoginPage = () => {
           <input
             type="text"
             name="password"
+            className="form-control"
             value={formData.password}
             onChange={handleInputChange}
           />
