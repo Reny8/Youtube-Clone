@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { KEY } from "../../localKey";
 
 const VideoPage = (props) => {
   const [user, token] = useAuth();
@@ -9,7 +10,7 @@ const VideoPage = (props) => {
     const fetchVideos = async () => {
       try {
         let response = await axios.get(
-          "https://www.googleapis.com/youtube/v3/search?q=cats&key=AIzaSyBoNpzKq9ePvOhN8XLIrvCsqcUZt1sSj5c&part=snippet&maxLength=5",
+          "https://www.googleapis.com/youtube/v3/search?q=cats&key={KEY}&part=snippet&maxLength=5",
           {
             headers: {
               Authorization: "Bearer " + token,
