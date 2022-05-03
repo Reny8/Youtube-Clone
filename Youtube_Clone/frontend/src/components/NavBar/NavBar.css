@@ -9,27 +9,19 @@ li {
 }
 
 .navBar {
-  background: steelblue;
-  box-shadow: 4px 2px 5px gray;
-  color: white;
-  margin-bottom: 2rem;
-  padding: 1.5rem 2rem;
+ margin-top: 1rem;
+ margin-right: 1rem;
 }
 
 .navBar button {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
+  background: rgb(152, 136, 136);
+  color: darkred;
   padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px;
+  border: none;
 }
 
-.navBar button:hover {
-  background: white;
-  color: steelblue;
-  cursor: pointer;
-}
-
-.brand {
-  cursor: pointer;
-  font-size: 2rem;
+.title {
+  color: darkred
 }
