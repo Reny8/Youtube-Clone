@@ -1,35 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import useAuth from "../../hooks/useAuth";
-import { KEY } from "../../localKey";
+import React from "react";
+
 
 const VideoPage = (props) => {
-  const [user, token] = useAuth();
-  const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        let response = await axios.get(
-          "https://www.googleapis.com/youtube/v3/search?q=cats&key={KEY}&part=snippet&maxLength=5",
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        setVideos(response.data);
-        console.log(videos);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchVideos();
-  }, [token]);
+
 
   return (
     <div>
-      {videos &&
-        videos.map((video) => {
+      {props.videos.map((video) => {
           <div>
             <div>
               <img scr={video.snippet.thumbnails.default.url} />
