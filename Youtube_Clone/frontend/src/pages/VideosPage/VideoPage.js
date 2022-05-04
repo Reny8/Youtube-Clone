@@ -1,25 +1,27 @@
-import React from "react";
-
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import DisplayVideos from "../../components/DisplayVideos/DisplayVideos";
+import { KEY } from "../../localKey";
+// import { Link } from "react-router-dom";
 const VideoPage = (props) => {
+  const [videos, setVideos] = useState([]);
 
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
+  const fetchVideos = async () => {
+    try {
+      let response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/search?q=cats&key=${KEY}&part=snippet&maxLength=5`
+      );
+      setVideos(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
-    <div>
-      {props.videos.map((video) => {
-          <div>
-            <div>
-              <img scr={video.snippet.thumbnails.default.url} />
-            </div>
-            <div>
-              <h2>{video.snippet.title}</h2>
-            </div>
-            <div>
-              <p>{video.snippt.description}</p>
-            </div>
-          </div>;
-        })}
-    </div>
+      <DisplayVideos videos={videos} />
   );
 };
 
