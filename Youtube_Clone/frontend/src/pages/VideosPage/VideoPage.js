@@ -15,7 +15,7 @@ const VideoPage = (props) => {
       let response = await axios.get(
         `https://www.googleapis.com/youtube/v3/search?q=cats&key=${KEY}&part=snippet&maxLength=5`
       );
-      setVideos(response.data);
+      setVideos(response.data.items);
     } catch (error) {
       console.log(error.message);
     }
