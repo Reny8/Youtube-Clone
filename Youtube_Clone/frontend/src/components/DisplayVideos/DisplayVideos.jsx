@@ -9,13 +9,18 @@ const DisplayVideos = (props) => {
     <div>
       {props.videos.map((video, index) => {
         return (
-          <Link to="player">
+          <Link
+            to="player"
+            onClick={() => {
+              handleClick(video.id.videoId);
+            }}
+          >
             <ul key={index}>
               {" "}
               <li>
                 <img
                   scr={video.snippet.thumbnails.default.url}
-                  alt="No Image Found"
+                  alt="Not Found"
                 />
               </li>
               <li>
@@ -23,15 +28,6 @@ const DisplayVideos = (props) => {
               </li>
               <li>
                 <p>{video.snippet.description}</p>
-              </li>{" "}
-              <li>
-                <button
-                  onClick={() => {
-                    handleClick(video.id.videoId);
-                  }}
-                >
-                  Watch Video
-                </button>
               </li>
             </ul>{" "}
           </Link>
