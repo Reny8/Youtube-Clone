@@ -5,7 +5,7 @@ import { KEY } from "../../localKey";
 // import { Link } from "react-router-dom";
 const VideoPage = (props) => {
   const [videos, setVideos] = useState([]);
-
+  const [id, setId] = useState("");
   useEffect(() => {
     fetchVideos();
   }, []);
@@ -13,7 +13,7 @@ const VideoPage = (props) => {
   const fetchVideos = async () => {
     try {
       let response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?q=cats&key=${KEY}&part=snippet&maxLength=5`
+        `https://www.googleapis.com/youtube/v3/search?q=cats&type=video&key=${KEY}&part=snippet&maxLength=5`
       );
       setVideos(response.data.items);
     } catch (error) {
@@ -21,7 +21,7 @@ const VideoPage = (props) => {
     }
   };
   return (
-      <DisplayVideos videos={videos} />
+      <DisplayVideos setId={setId}videos={videos} />
   );
 };
 
