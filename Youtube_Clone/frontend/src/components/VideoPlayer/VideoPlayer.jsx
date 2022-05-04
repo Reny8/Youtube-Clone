@@ -1,5 +1,5 @@
 import React from "react";
-const VideoPlayer = (id) => {
+const VideoPlayer = ({id}) => {
   return (
     <iframe
       id="ytplayer"

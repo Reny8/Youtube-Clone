@@ -21,7 +21,7 @@ const VideoPage = (props) => {
     }
   };
   return (
-      <DisplayVideos setId={setId}videos={videos} />
+      <DisplayVideos id= {id} setId={setId}videos={videos} />
   );
 };
 
