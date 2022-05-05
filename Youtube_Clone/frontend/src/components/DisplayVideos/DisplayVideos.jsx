@@ -6,7 +6,6 @@ const DisplayVideos = (props) => {
 
   return (
     <div>
-      
         <div>
           {props.videos.map((video, index) => (
             <span key={index + 1}>
@@ -14,14 +13,7 @@ const DisplayVideos = (props) => {
               <Link to={`/player/${video.id.videoId}`}>
                 <input
                   type="image"
-                  onClick={(event) =>
-                    handleClick(
-                      event,
-                      video.id.videoId,
-                      video.snippet.title
-                    )
-                  }
-                  src={video.snippet.thumbnails.medium.url} alt='Not Found'
+                  src={video.snippet.thumbnails.default.url} alt='Not Found'
                 />
                 
                 <div>
