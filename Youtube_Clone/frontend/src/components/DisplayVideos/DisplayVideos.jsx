@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+
 const DisplayVideos = (props) => {
   const handleClick = (event, id, title) => {
     event.preventDefault();
@@ -10,8 +12,8 @@ const DisplayVideos = (props) => {
     <div>
       <Link to="/player">
         <div>
-          {props.videos.map((video) => (
-            <span>
+          {props.videos.map((video, index) => (
+            <span key={index + 1}>
               <div>
                 <input
                   type="image"

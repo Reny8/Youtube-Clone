@@ -11,10 +11,12 @@ import VideoPage from "./pages/VideosPage/VideoPage";
 import Footer from "./components/Footer/Footer";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import React, { useState } from 'react';
+import Comment from "./components/Comment/Comment";
 
 // Util Imports
 function App() {
 const [id, setId] = useState("");
+const [comment, setComment] = useState("");
 
   return (
     <div className="page">
@@ -23,8 +25,9 @@ const [id, setId] = useState("");
         <Route path="/" element={<VideoPage id = {id} setId= {setId}/>} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/player" element={<VideoPlayer/>}/>
+        <Route path="/player" element={<VideoPlayer comment = {comment} id = {id} setComment={setComment}/>}/>
       </Routes>
+      {/* <Comment comment = {comment} id = {id} setComment={setComment}/> */}
       <Footer />
     </div>
   );
