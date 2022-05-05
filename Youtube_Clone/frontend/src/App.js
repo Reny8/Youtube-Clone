@@ -10,6 +10,7 @@ import VideoPage from "./pages/VideosPage/VideoPage";
 import Footer from "./components/Footer/Footer";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import React, { useState } from 'react';
+import DisplayReplies from "./components/DisplayReplies/DisplayReplies";
 
 // Util Imports
 function App() {
