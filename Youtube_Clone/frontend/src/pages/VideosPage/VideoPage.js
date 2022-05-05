@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 // import { Link } from "react-router-dom";
 const VideoPage = (props) => {
   const [videos, setVideos] = useState([]);
-  const [id, setId] = useState("vrAMRxBB5KI");
+  
   useEffect(() => {
     fetchVideos();
   }, []);
@@ -24,9 +24,9 @@ const VideoPage = (props) => {
   };
   return (
      <div>
-      <DisplayVideos setId={setId}videos={videos} />
+      <DisplayVideos setId={props.setId} videos={videos} />
       <Routes>
-      <Route path="/player" element={<VideoPlayer id = {id}/>} />
+      <Route exact path="/player" component={<VideoPlayer id = {props.id}/>} />
     </Routes>
     </div>
   );

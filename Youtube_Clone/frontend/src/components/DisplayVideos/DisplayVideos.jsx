@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 const DisplayVideos = (props) => {
-  const handleClick = (event, id, title, description) => {
+  const handleClick = (event, id, title) => {
     event.preventDefault();
     props.setId(id);
   };
@@ -19,11 +19,10 @@ const DisplayVideos = (props) => {
                     handleClick(
                       event,
                       video.id.videoId,
-                      video.snippet.title,
-                      video.snippet.description
+                      video.snippet.title
                     )
                   }
-                  src={video.snippet.thumbnails.medium.url}
+                  src={video.snippet.thumbnails.medium.url} alt='Not Found'
                 />
                 <div>
                   <h2>{video.snippet.title}</h2>
@@ -42,25 +41,3 @@ const DisplayVideos = (props) => {
 
 export default DisplayVideos;
 
-// {/* <Link
-// to="/player"
-// state={video.id.videoId}>
-// <ul key={index}>
-//   {" "}
-//   <li>
-//     <img
-//       scr={video.snippet.thumbnails.default.url}
-//       alt="Not Found"
-//     />
-//   </li>
-//   <li>
-//     <h2>{video.snippet.title}</h2>
-//   </li>
-//   <li>
-//     <p>{video.snippet.description}</p>
-//   </li>
-// </ul>{" "}
-// </Link>
-// </div>
-// );
-// })} */}
