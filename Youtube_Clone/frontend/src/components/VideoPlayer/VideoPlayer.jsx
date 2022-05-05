@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 import DisplayVideos from "../DisplayVideos/DisplayVideos";
 import Comments from "../Comment/Comments";
 import axios from "axios";
-// import useAuth from "../../hooks/useAuth";
 import { KEY } from "../../localKey";
 
 const VideoPlayer = (props) => {
   const { videoId } = useParams();
   const [comments, setComments] = useState([]);
   const [related, setRelated] = useState([]);
+  
 
   useEffect(() => {
     getComments()
-  },[])
- 
+  },[]);
+
 
   // do axios call here for comments
   const getComments = async () =>{
@@ -37,6 +37,8 @@ const VideoPlayer = (props) => {
     }
   }
 
+  
+
   return (
     <div>
       <iframe
@@ -55,21 +57,13 @@ const VideoPlayer = (props) => {
         {" "}
       <DisplayVideos videos= {related}/>
       </div>
+
+      <div>
+      </div>
     </div>
   );
 };
 
 export default VideoPlayer;
 
-        // async function getReplies() {
-        //   try {
-        //     let response = await axios.get("http://127.0.0.1:8000/api/reply/${comment.pk}",{
-        //       headers: {
-        //         Authorization: "Bearer " + token,
-        //       }
-        //     });
-        //     console.log(response.data);
-        //   } catch (error) {
-        //     console.log(error.message);
-        //   }
-        // }
+        
