@@ -12,8 +12,7 @@ const VideoPlayer = (props) => {
   const [related, setRelated] = useState([]);
 
   useEffect(() => {
-    getComments();
-    GetRelatedVideos();
+    getComments()
   },[])
  
 
@@ -22,6 +21,7 @@ const VideoPlayer = (props) => {
     try {
       let response = await axios.get("http://127.0.0.1:8000/api/comments/");
       setComments(response.data);
+      await GetRelatedVideos()
     } catch (error) {
       console.log(error.message);
     }

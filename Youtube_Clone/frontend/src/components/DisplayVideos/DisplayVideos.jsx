@@ -7,15 +7,16 @@ const DisplayVideos = (props) => {
   return (
     <div>
         <div>
-          {props.videos.map((video, index) => (
-            <span key={index + 1}>
+          {props.videos.map((video, index) => {
+            if (video.snippet) {
+              return (
+               <span key={index + 1}>
               <div>
               <Link to={`/player/${video.id.videoId}`}>
                 <input
                   type="image"
                   src={video.snippet.thumbnails.default.url} alt='Not Found'
                 />
-                
                 <div>
                   <h2>{video.snippet.title}</h2>
                 </div>
@@ -25,7 +26,17 @@ const DisplayVideos = (props) => {
                 </Link>
               </div>
             </span>
-          ))}
+              )}
+          else return (
+            <span key={index + 1 }>
+              <div>
+                <h1>Loading ...</h1>
+              </div>
+            </span>
+            )
+          }
+           
+          )}
         </div>
     </div>
   );
