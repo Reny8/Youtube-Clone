@@ -15,7 +15,7 @@ const DisplayVideos = (props) => {
               <Link to={`/player/${video.id.videoId}`}>
                 <input
                   type="image"
-                  src={video.snippet.thumbnails.default.url} alt='Not Found'
+                  src={video.snippet.thumbnails.medium.url} alt='Not Found'
                 />
                 <div>
                   <h2>{video.snippet.title}</h2>
