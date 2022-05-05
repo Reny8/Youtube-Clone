@@ -11,23 +11,23 @@ import VideoPage from "./pages/VideosPage/VideoPage";
 import Footer from "./components/Footer/Footer";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import React, { useState } from 'react';
-import Comment from "./components/Comment/Comment";
+// import Comment from "./components/Comment/Comment";
 
 // Util Imports
 function App() {
-const [id, setId] = useState("");
-const [comment, setComment] = useState("");
+const [comment, setComment] = useState([]);
 
   return (
     <div className="page">
       <Navbar />
       <Routes>
-        <Route path="/" element={<VideoPage id = {id} setId= {setId}/>} />
+        <Route path="*" element={<VideoPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/player" element={<VideoPlayer comment = {comment} id = {id} setComment={setComment}/>}/>
+        <Route path="/player/:videoId/" element={<VideoPlayer comment = {comment}  setComment={setComment}/>}/>
+        {/* <Route path="/player/comment/"element={<Comment comment = {comment} id = {id} setComment={setComment}/>}/> */}
       </Routes>
-      {/* <Comment comment = {comment} id = {id} setComment={setComment}/> */}
+      
       <Footer />
     </div>
   );

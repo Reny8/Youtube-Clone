@@ -3,18 +3,15 @@ import { Link } from "react-router-dom";
 
 
 const DisplayVideos = (props) => {
-  const handleClick = (event, id, title) => {
-    event.preventDefault();
-    props.setId(id);
-  };
 
   return (
     <div>
-      <Link to="/player">
+      
         <div>
           {props.videos.map((video, index) => (
             <span key={index + 1}>
               <div>
+              <Link to={`/player/${video.id.videoId}`}>
                 <input
                   type="image"
                   onClick={(event) =>
@@ -26,17 +23,18 @@ const DisplayVideos = (props) => {
                   }
                   src={video.snippet.thumbnails.medium.url} alt='Not Found'
                 />
+                
                 <div>
                   <h2>{video.snippet.title}</h2>
                 </div>
                 <div>
                   <p>{video.snippet.description}</p>
                 </div>
+                </Link>
               </div>
             </span>
           ))}
         </div>
-      </Link>
     </div>
   );
 };

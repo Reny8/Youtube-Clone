@@ -24,9 +24,9 @@ const VideoPage = (props) => {
   };
   return (
      <div>
-      <DisplayVideos setId={props.setId} videos={videos} />
+      <DisplayVideos  videos={videos} />
       <Routes>
-      <Route exact path="/player" component={<VideoPlayer id = {props.id}/>} />
+      <Route exact path="/player" component={<VideoPlayer />} />
     </Routes>
     </div>
   );
