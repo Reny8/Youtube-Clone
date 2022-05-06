@@ -1,48 +1,36 @@
-// import React, {useState} from "react";
-// import useAuth from "../../hooks/useAuth";
+import React, {useState} from "react";
 
-// const ReplyForm = (props) => {
+const ReplyForm = (props) => {
+const [text, setText]= useState('')
 
-// const [user, token] = useAuth();
-// const [comment, setComment]= useState('')
-// const [text, setText]= useState('')
-
-// function handlesubmit(event){
-//     event.preventDefault();
-//     let newReply ={
-//         comment: comment, 
-//         text: text
-//     };
-//     console.log(newReply);
-//     props.createReply(newReply)
-// }
-
-// return(
-//     <form onSubmit={handlesubmit} id="form">
-//         <p>Reply:</p>
-//         <div>
-//             <label>Comment:</label>
-//             <input 
-//             type="text"
-//             value={comment}
-//             placeholder="Enter comment"
-//             onChange={(event) => setComment(event.target.value)}
-//             />
-//         </div>
-//         <div>
-//             <label>Text:</label>
-//             <input 
-//             type="text"
-//             value={text}
-//             placeholder="Enter text"
-//             onChange={(event) => setText(event.target.value)}
-//             />
-//         </div>
-//         <button>Submit</button>
-//     </form>
-// )
+function handlesubmit(event) {
+    event.preventDefault()
+    let newReply = {
+      user: props.user.id,
+      comment: props.commentId,
+      text: text,
+      user_id: props.user.id,
+      comment_id: props.commentId,
+    };
+    props.setNewReply(newReply);
+    props.addReply();
+    setText("")
+  }
+return(
+    <form onSubmit={handlesubmit} id="form">
+        <div>
+            <input 
+            type="text"
+            value={text}
+            placeholder="Enter text"
+            onChange={(event) => setText(event.target.value)}
+            />
+        </div>
+        <button type='submit'>Add Reply</button>
+    </form>
+)
 
 
-// }
+}
 
-// export default ReplyForm;
+export default ReplyForm;

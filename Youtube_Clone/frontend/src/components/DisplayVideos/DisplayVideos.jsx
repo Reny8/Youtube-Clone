@@ -10,7 +10,7 @@ const DisplayVideos = (props) => {
           {props.videos.map((video, index) => {
             if (video.snippet) {
               return (
-               <span key={index + 1}>
+               <span key={index * 5}>
               <div>
               <Link to={`/player/${video.id.videoId}`}>
                 <input
@@ -30,7 +30,7 @@ const DisplayVideos = (props) => {
           else return (
             <span key={index + 1 }>
               <div>
-                <h1>Loading ...</h1>
+                <h6>Loading ...</h6>
               </div>
             </span>
             )

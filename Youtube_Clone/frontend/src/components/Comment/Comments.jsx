@@ -2,14 +2,6 @@ import React from "react";
 import DisplayReplies from "../DisplayReplies/DisplayReplies";
 
 const Comments = (props) => {
-  // const createReply= async () =>{
-  //   try {
-  //     let response = await axios.get("http://127.0.0.1:8000/api/reply/");
-  //     getReplies();
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
 
   return (
     <div>
