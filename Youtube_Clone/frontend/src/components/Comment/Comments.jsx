@@ -12,6 +12,8 @@ const Comments = (props) => {
               <div key={el.id}>
                 <h1>Comments</h1>
                 <h4>{el.text}</h4>{" "}
+                <button>Like {el.likes}</button>
+                <button>Dislike {el.dislikes}</button>
                 <div>
                   <h1>Replies</h1>
                 </div>

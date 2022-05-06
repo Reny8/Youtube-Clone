@@ -4,28 +4,28 @@ import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm/ReplyForm";
 
 const DisplayReplies = (props) => {
-  const [replies, setReplies] = useState([]);
   const [user, token] = useAuth();
+  const [replies, setReplies] = useState([]);
   const [newReply, setNewReply] = useState({});
-
 
   useEffect(() => {
     getReplies(props.commentId);
-  }, [token]);
+  }, []);
 
   const addReply = async () => {
     try {
-      let response = await axios.get(
+      let response = await axios.post(
         "http://127.0.0.1:8000/api/reply/",
         newReply,
         {
           headers: {
-            Authorization: "Bearer " + token,
-          },
+            Authorization: "Bearer " + token
+          }
         }
       );
       await getReplies();
     } catch (error) {
+      console.log(token);
       console.log(error.message);
     }
   };
@@ -41,7 +41,7 @@ const DisplayReplies = (props) => {
       console.log(error.message);
     }
   }
- 
+
   return (
     <div>
       {replies.map((reply) => {
@@ -50,11 +50,15 @@ const DisplayReplies = (props) => {
             <div>
               <h6>{reply.text}</h6>
             </div>
-            <ReplyForm commentId = {props.commentId} user={user} setNewReply = {setNewReply} addReply={addReply}/>
+            <ReplyForm
+              commentId={props.commentId}
+              user={user}
+              addReply={addReply}
+              setNewReply={setNewReply}
+            />
           </div>
         );
       })}
-      
     </div>
   );
 };

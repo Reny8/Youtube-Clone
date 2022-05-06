@@ -15,6 +15,7 @@ function handlesubmit(event) {
     props.setNewReply(newReply);
     props.addReply();
     setText("")
+   
   }
 return(
     <form onSubmit={handlesubmit} id="form">
