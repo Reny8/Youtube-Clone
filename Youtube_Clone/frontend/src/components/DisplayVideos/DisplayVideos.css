@@ -1,0 +1,12 @@
+.flex-container {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0 0 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+.words {
+    padding: 0;
+    margin: 0 0 10px
+}

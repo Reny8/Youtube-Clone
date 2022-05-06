@@ -15,7 +15,7 @@ const VideoPage = (props) => {
   const fetchVideos = async () => {
     try {
       let response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?q=cats&type=video&key=${KEY}&part=snippet&maxLength=5`
+        `https://www.googleapis.com/youtube/v3/search?q=cats&type=video&key=${KEY}&part=snippet&maxResults=6`
       );
       setVideos(response.data.items);
     } catch (error) {
