@@ -34,3 +34,27 @@ def comments_details(request, pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save(user = request.user)
             return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def like_comment(request,pk):
+    if request.method =="PATCH":
+        comment = get_object_or_404(Comment, pk=pk)
+        comment.likes += 1
+        serializer = CommentSerializer(comment,data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def dislike_comment(request,pk):
+    if request.method =="PATCH":
+        comment = get_object_or_404(Comment, pk=pk)
+        comment.dislikes += 1
+        serializer = CommentSerializer(comment,data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
+    
