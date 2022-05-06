@@ -14,7 +14,7 @@ function handlesubmit(event) {
     };
     props.setNewReply(newReply);
     props.addReply();
-    setText("")
+    setText('')
    
   }
 return(

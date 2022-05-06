@@ -7,35 +7,31 @@ import { KEY } from "../../localKey";
 import useAuth from "../../hooks/useAuth";
 import CommentForm from "../CommentForm/CommentForm";
 
-
 const VideoPlayer = (props) => {
   const [user, token] = useAuth();
   const { videoId } = useParams();
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({});
   const [related, setRelated] = useState([]);
-  
 
   useEffect(() => {
-    getComments()
-  },[]);
-
+    getComments();
+  }, []);
 
   // do axios call here for comments
-  const getComments = async () =>{
+  const getComments = async () => {
     try {
       let response = await axios.get("http://127.0.0.1:8000/api/comments/");
       setComments(response.data);
-      await GetRelatedVideos()
+      await GetRelatedVideos();
     } catch (error) {
       console.log(error.message);
     }
-  }
-
+  };
 
   const addComment = async () => {
     try {
-       await axios.post(
+      await axios.post(
         "http://127.0.0.1:8000/api/comments/create/",
         newComment,
         {
@@ -46,13 +42,12 @@ const VideoPlayer = (props) => {
       );
       await getComments();
     } catch (error) {
-      console.log(newComment)
+      console.log(newComment);
       console.log(error.message);
     }
   };
 
-
-  const GetRelatedVideos = async () =>{
+  const GetRelatedVideos = async () => {
     try {
       let response = await axios.get(
         `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&part=snippet&type=video&key=${KEY}`
@@ -61,8 +56,7 @@ const VideoPlayer = (props) => {
     } catch (error) {
       console.log(error.message);
     }
-  }
-
+  };
 
   return (
     <div>
@@ -76,26 +70,24 @@ const VideoPlayer = (props) => {
         frameBorder="0"
       ></iframe>
       <div>
-        <Comments comments={comments} videoId={videoId} />
-      </div>
-      <div>
-      <CommentForm
-                videoId={videoId}
-                user={user}
-                addComment={addComment}
-                setNewComment={setNewComment}
-              />
+        <h1>Comments</h1>
+        <div>
+          <CommentForm
+            videoId={videoId}
+            user={user}
+            addComment={addComment}
+            setNewComment={setNewComment}
+          />
+        </div>
+        <Comments getComments ={getComments}comments={comments} videoId={videoId} />
       </div>
       <div>
         {" "}
-      <DisplayVideos videos= {related}/>
+        <DisplayVideos videos={related} />
       </div>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 };
 
 export default VideoPlayer;
-
-        

@@ -14,7 +14,7 @@ const CommentForm = (props) => {
     };
     props.setNewComment(newComment);
     props.addComment();
-    setCommentText("")
+    setCommentText('')
   }
   return (
     <form onSubmit={handlesubmit}>

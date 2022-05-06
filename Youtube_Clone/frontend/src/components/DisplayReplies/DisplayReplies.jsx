@@ -14,15 +14,11 @@ const DisplayReplies = (props) => {
 
   const addReply = async () => {
     try {
-       await axios.post(
-        "http://127.0.0.1:8000/api/reply/",
-        newReply,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      await axios.post("http://127.0.0.1:8000/api/reply/", newReply, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       await getReplies();
     } catch (error) {
       console.log(error.message);
@@ -43,32 +39,22 @@ const DisplayReplies = (props) => {
 
   return (
     <div>
+      <div>
+        <ReplyForm
+          commentId={props.commentId}
+          user={user}
+          addReply={addReply}
+          setNewReply={setNewReply}
+        />
+      </div>
       {replies.map((reply) => {
         if (replies !== []) {
           return (
             <div key={reply.id}>
-              <div>
-                <h6>{reply.text}</h6>
-              </div>
-              <ReplyForm
-                commentId={props.commentId}
-                user={user}
-                addReply={addReply}
-                setNewReply={setNewReply}
-              />
+              <h6>{reply.text}</h6>
             </div>
           );
-        } else
-          return (
-            <div>
-              <ReplyForm
-                commentId={props.commentId}
-                user={user}
-                addReply={addReply}
-                setNewReply={setNewReply}
-              />
-            </div>
-          );
+        }
       })}
     </div>
   );
