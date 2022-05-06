@@ -19,13 +19,12 @@ const DisplayReplies = (props) => {
         newReply,
         {
           headers: {
-            Authorization: "Bearer " + token
-          }
+            Authorization: "Bearer " + token,
+          },
         }
       );
       await getReplies();
     } catch (error) {
-      console.log(token);
       console.log(error.message);
     }
   };
@@ -45,19 +44,31 @@ const DisplayReplies = (props) => {
   return (
     <div>
       {replies.map((reply) => {
-        return (
-          <div key={reply.id}>
-            <div>
-              <h6>{reply.text}</h6>
+        if (replies !== []) {
+          return (
+            <div key={reply.id}>
+              <div>
+                <h6>{reply.text}</h6>
+              </div>
+              <ReplyForm
+                commentId={props.commentId}
+                user={user}
+                addReply={addReply}
+                setNewReply={setNewReply}
+              />
             </div>
-            <ReplyForm
-              commentId={props.commentId}
-              user={user}
-              addReply={addReply}
-              setNewReply={setNewReply}
-            />
-          </div>
-        );
+          );
+        } else
+          return (
+            <div>
+              <ReplyForm
+                commentId={props.commentId}
+                user={user}
+                addReply={addReply}
+                setNewReply={setNewReply}
+              />
+            </div>
+          );
       })}
     </div>
   );
