@@ -14,7 +14,7 @@ const DisplayReplies = (props) => {
 
   const addReply = async () => {
     try {
-      let response = await axios.post(
+       await axios.post(
         "http://127.0.0.1:8000/api/reply/",
         newReply,
         {

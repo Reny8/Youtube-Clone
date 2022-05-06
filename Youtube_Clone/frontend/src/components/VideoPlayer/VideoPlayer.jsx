@@ -4,10 +4,15 @@ import DisplayVideos from "../DisplayVideos/DisplayVideos";
 import Comments from "../Comment/Comments";
 import axios from "axios";
 import { KEY } from "../../localKey";
+import useAuth from "../../hooks/useAuth";
+import CommentForm from "../CommentForm/CommentForm";
+
 
 const VideoPlayer = (props) => {
+  const [user, token] = useAuth();
   const { videoId } = useParams();
   const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState({});
   const [related, setRelated] = useState([]);
   
 
@@ -26,6 +31,27 @@ const VideoPlayer = (props) => {
       console.log(error.message);
     }
   }
+
+
+  const addComment = async () => {
+    try {
+       await axios.post(
+        "http://127.0.0.1:8000/api/comments/create/",
+        newComment,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      await getComments();
+    } catch (error) {
+      console.log(newComment)
+      console.log(error.message);
+    }
+  };
+
+
   const GetRelatedVideos = async () =>{
     try {
       let response = await axios.get(
@@ -37,7 +63,6 @@ const VideoPlayer = (props) => {
     }
   }
 
-  
 
   return (
     <div>
@@ -54,10 +79,17 @@ const VideoPlayer = (props) => {
         <Comments comments={comments} videoId={videoId} />
       </div>
       <div>
+      <CommentForm
+                videoId={videoId}
+                user={user}
+                addComment={addComment}
+                setNewComment={setNewComment}
+              />
+      </div>
+      <div>
         {" "}
       <DisplayVideos videos= {related}/>
       </div>
-
       <div>
       </div>
     </div>
