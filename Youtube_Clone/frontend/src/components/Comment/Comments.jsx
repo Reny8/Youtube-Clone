@@ -9,13 +9,7 @@ const Comments = (props) => {
   async function handleLikes(comment_id) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/comments/${comment_id}/likes/`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+        `http://127.0.0.1:8000/api/comments/${comment_id}/likes/`);
       await props.getComments();
     } catch (error) {
       console.log(token);
@@ -25,13 +19,7 @@ const Comments = (props) => {
   async function handleDislikes(comment_id) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/comments/${comment_id}/dislikes/`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+        `http://127.0.0.1:8000/api/comments/${comment_id}/dislikes/`);
       await props.getComments();
     } catch (error) {
       console.log(token);

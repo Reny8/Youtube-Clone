@@ -37,7 +37,6 @@ def comments_details(request, pk):
 
 
 @api_view(['PATCH'])
-@permission_classes([IsAuthenticated])
 def like_comment(request,pk):
     if request.method =="PATCH":
         comment = get_object_or_404(Comment, pk=pk)
@@ -48,7 +47,6 @@ def like_comment(request,pk):
             return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
 
 @api_view(['PATCH'])
-@permission_classes([IsAuthenticated])
 def dislike_comment(request,pk):
     if request.method =="PATCH":
         comment = get_object_or_404(Comment, pk=pk)
