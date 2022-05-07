@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm/ReplyForm";
-
+import "./DisplayReplies.css"
 const DisplayReplies = (props) => {
   const [user, token] = useAuth();
   const [replies, setReplies] = useState([]);
@@ -38,15 +38,13 @@ const DisplayReplies = (props) => {
   }
 
   return (
-    <div>
-      <div>
-        <ReplyForm
-          commentId={props.commentId}
-          user={user}
-          addReply={addReply}
-          setNewReply={setNewReply}
-        />
-      </div>
+    <div className="replies-box">
+      <ReplyForm
+        commentId={props.commentId}
+        user={user}
+        addReply={addReply}
+        setNewReply={setNewReply}
+      />
       {replies.map((reply) => {
         if (replies !== []) {
           return (

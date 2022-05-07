@@ -11,11 +11,10 @@ const Navbar = () => {
       <div className='border-box'>
         <ul>
           <li>
-            <Link to="/" style={{ textDecoration: "none", color: "darkred" }}>
               <h1>CatTube</h1>
-            </Link>
           </li>
           <li className='navbar-button'>
+            <Link to="/" ><button>Home</button></Link>
             {user ? (
               <button onClick={logoutUser}>Logout</button>
             ) : (
