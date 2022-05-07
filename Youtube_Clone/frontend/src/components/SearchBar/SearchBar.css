@@ -1,0 +1,20 @@
+.searchBar {
+    margin-left: 40rem
+}
+.search-button {
+    color: darkred;
+    background-color: transparent;
+    border-color: darkred;
+    margin-left: 1rem;
+    font-size: medium;
+    border-style: grey;
+    box-shadow: 2px 2px 6px
+
+}
+
+.input-search {
+    background-color: transparent;
+    border-color: darkred;
+    width: 30%;
+    box-shadow: 2px 2px 6px
+}

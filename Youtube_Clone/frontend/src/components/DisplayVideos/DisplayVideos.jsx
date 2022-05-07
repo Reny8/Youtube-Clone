@@ -8,16 +8,16 @@ const DisplayVideos = (props) => {
     <div>
       {" "}
      
-      <div >
+      <div className="card-background">
         {props.videos.map((video, index) => {
           if (video.snippet) {
             return (
               <span key={index * 5}>
-                <div className="card mb-3">
+                <div id="cardColor" className="card mb-3">
                   <Link to={`/player/${video.id.videoId}`} style={{color: "darkred"}}>
                     <div className="row g-0">
                     <div className="col-md-4">
-                      <input
+                      <input className="image"
                         type="image"
                         src={video.snippet.thumbnails.medium.url}
                         alt="Not Found"
