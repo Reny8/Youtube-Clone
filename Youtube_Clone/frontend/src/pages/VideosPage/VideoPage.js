@@ -4,6 +4,7 @@ import DisplayVideos from "../../components/DisplayVideos/DisplayVideos";
 import { KEY } from "../../localKey";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import { Route, Routes } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar"
 // import { Link } from "react-router-dom";
 const VideoPage = (props) => {
   const [videos, setVideos] = useState([]);
@@ -24,9 +25,10 @@ const VideoPage = (props) => {
   };
   return (
      <div>
-      <DisplayVideos  videos={videos} />
+        <SearchBar fetchVideos={fetchVideos} videos={videos} setVideos={setVideos}/>
+      <DisplayVideos  setVideos = {setVideos} videos={videos} />
       <Routes>
-      <Route exact path="/player" component={<VideoPlayer />} />
+      <Route exact path="/player" component={<VideoPlayer videos={videos} />} />
     </Routes>
     </div>
   );

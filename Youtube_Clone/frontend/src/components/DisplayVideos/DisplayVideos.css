@@ -1,10 +1,6 @@
 .flex-container {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 0 0 5px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box
+    display: flex;
+    flex-direction: column
 }
 .words {
     padding: 0;

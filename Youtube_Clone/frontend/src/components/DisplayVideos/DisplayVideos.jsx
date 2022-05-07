@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import "./DisplayVideos.css";
 
 const DisplayVideos = (props) => {
+
   return (
     <div>
+      {" "}
+     
       <div className="flex-container">
         {props.videos.map((video, index) => {
           if (video.snippet) {
@@ -19,8 +22,9 @@ const DisplayVideos = (props) => {
                         alt="Not Found"
                       />
                       <div className="words">
-                      <h4>{video.snippet.title}</h4>
-                      <p>{video.snippet.description}</p></div>
+                        <h4>{video.snippet.title}</h4>
+                        <p>{video.snippet.description}</p>
+                      </div>
                     </div>
                   </Link>
                 </div>

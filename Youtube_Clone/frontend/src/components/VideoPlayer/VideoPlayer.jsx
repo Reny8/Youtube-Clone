@@ -78,13 +78,17 @@ const VideoPlayer = (props) => {
             addComment={addComment}
             setNewComment={setNewComment}
           />
-        <Comments getComments ={getComments}comments={comments} videoId={videoId} />
+          <Comments
+            getComments={getComments}
+            comments={comments}
+            videoId={videoId}
+          />
+        </div>
+        <div>
+          {" "}
+          <DisplayVideos videos={related} />
+        </div>
       </div>
-      <div>
-        {" "}
-        <DisplayVideos videos={related} />
-      </div>
-    </div>
     </div>
   );
 };
