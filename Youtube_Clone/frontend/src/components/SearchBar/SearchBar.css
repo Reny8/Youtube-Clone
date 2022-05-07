@@ -1,5 +1,5 @@
 .searchBar {
-    margin-left: 40rem
+    margin-left: 16rem
 }
 .search-button {
     color: darkred;
@@ -8,13 +8,15 @@
     margin-left: 1rem;
     font-size: medium;
     border-style: grey;
-    box-shadow: 2px 2px 6px
+    box-shadow: 2px 2px 6px;
 
 }
 
 .input-search {
     background-color: transparent;
     border-color: darkred;
-    width: 30%;
-    box-shadow: 2px 2px 6px
+    width: 75%;
+    box-shadow: 2px 2px 6px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

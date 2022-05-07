@@ -1,37 +1,36 @@
-import React, {useState} from "react";
-
+import React, { useState } from "react";
 const ReplyForm = (props) => {
-const [text, setText]= useState('')
+  const [text, setText] = useState('');
 
-function handlesubmit(event) {
-    event.preventDefault()
-    let newReply = {
+  function handlesubmit(event) {
+    event.preventDefault();
+    let new_reply = {
       user: props.user.id,
       comment: props.commentId,
       text: text,
       user_id: props.user.id,
       comment_id: props.commentId,
     };
-    props.setNewReply(newReply);
+    props.setNewReply(new_reply);
     props.addReply();
-    setText('')
-   
+    setText('');
   }
-return(
+  return (
     <form onSubmit={handlesubmit} id="form">
-        <div>
-            <input 
-            type="text"
-            value={text}
-            placeholder="Enter text"
-            onChange={(event) => setText(event.target.value)}
-            />
-        </div>
-        <button type='submit'>Add Reply</button>
+      <div className="reply">
+        <input
+          type="text"
+          className="input-search"
+          value={text}
+          placeholder="Enter text"
+          onChange={(event) => setText(event.target.value)}
+        />
+        <button className="search-button" type="submit">
+          Add Reply
+        </button>
+      </div>
     </form>
-)
-
-
-}
+  );
+};
 
 export default ReplyForm;

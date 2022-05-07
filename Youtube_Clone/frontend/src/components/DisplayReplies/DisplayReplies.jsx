@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import ReplyForm from "../ReplyForm/ReplyForm";
-import "./DisplayReplies.css"
+import "./DisplayReplies.css";
 const DisplayReplies = (props) => {
   const [user, token] = useAuth();
   const [replies, setReplies] = useState([]);
@@ -19,8 +19,9 @@ const DisplayReplies = (props) => {
           Authorization: "Bearer " + token,
         },
       });
-      await getReplies();
+      getReplies(props.commentId);
     } catch (error) {
+      console.log(newReply)
       console.log(error.message);
     }
   };
@@ -38,22 +39,25 @@ const DisplayReplies = (props) => {
   }
 
   return (
-    <div className="replies-box">
+    <div>
+      <h4>Replies</h4>
+
+      {replies.map((reply) => {
+        if (replies !== []) {
+          return (
+            <div key={reply.id}>
+              <p>{reply.text}</p>
+            </div>
+          );
+        }  
+      })}
+    
       <ReplyForm
         commentId={props.commentId}
         user={user}
         addReply={addReply}
         setNewReply={setNewReply}
       />
-      {replies.map((reply) => {
-        if (replies !== []) {
-          return (
-            <div key={reply.id}>
-              <h6>{reply.text}</h6>
-            </div>
-          );
-        }
-      })}
     </div>
   );
 };

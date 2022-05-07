@@ -40,7 +40,7 @@ const VideoPlayer = (props) => {
           },
         }
       );
-      await getComments();
+      getComments();
     } catch (error) {
       console.log(newComment);
       console.log(error.message);
@@ -59,19 +59,19 @@ const VideoPlayer = (props) => {
   };
 
   return (
-    <div>
-      <iframe
-        id="ytplayer"
-        type="text/html"
-        title="myVideo"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
-        frameBorder="0"
-      ></iframe>
+    <div className="video-screen">
       <div>
-        <h1>Comments</h1>
+        <iframe
+          id="ytplayer"
+          type="text/html"
+          title="myVideo"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
+          frameBorder="0"
+        ></iframe>
         <div>
+          {" "}
           <CommentForm
             videoId={videoId}
             user={user}
@@ -79,15 +79,18 @@ const VideoPlayer = (props) => {
             setNewComment={setNewComment}
           />
           <Comments
+            user={user}
+            setNewComment={setNewComment}
+            addComment={addComment}
             getComments={getComments}
             comments={comments}
             videoId={videoId}
           />
         </div>
-        <div>
-          {" "}
-          <DisplayVideos videos={related} />
-        </div>
+      </div>
+      <div>
+        {" "}
+        <DisplayVideos videos={related} />
       </div>
     </div>
   );

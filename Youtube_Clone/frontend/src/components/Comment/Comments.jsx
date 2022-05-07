@@ -2,15 +2,15 @@ import React from "react";
 import DisplayReplies from "../DisplayReplies/DisplayReplies";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-
 const Comments = (props) => {
   const [user, token] = useAuth();
 
   async function handleLikes(comment_id) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/comments/${comment_id}/likes/`);
-      await props.getComments();
+        `http://127.0.0.1:8000/api/comments/${comment_id}/likes/`
+      );
+      props.getComments();
     } catch (error) {
       console.log(token);
       console.log(error.message);
@@ -19,8 +19,9 @@ const Comments = (props) => {
   async function handleDislikes(comment_id) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/comments/${comment_id}/dislikes/`);
-      await props.getComments();
+        `http://127.0.0.1:8000/api/comments/${comment_id}/dislikes/`
+      );
+      props.getComments();
     } catch (error) {
       console.log(token);
       console.log(error.message);
@@ -28,13 +29,15 @@ const Comments = (props) => {
   }
   return (
     <div>
-      <div>
-        {props.comments.map((el) => {
-          if (el.video_id === props.videoId) {
-            return (
-              <div key={el.id}>
-                <h4>{el.text}</h4>
+      {props.comments.map((el) => {
+        if (el.video_id === props.videoId) {
+          return (
+            <div className="replies-box" key={el.id}>
+              <h4>Comments</h4>{" "}
+              <div style={{ display: "flex"}}>
+                <p>{el.text}</p>
                 <button
+                  className="search-button"
                   onClick={() => {
                     handleLikes(el.id);
                   }}
@@ -42,22 +45,22 @@ const Comments = (props) => {
                   Like {el.likes}
                 </button>
                 <button
+                  className="search-button"
                   onClick={() => {
                     handleDislikes(el.id);
                   }}
                 >
                   Dislike {el.dislikes}
                 </button>
-                <div>
-                  <h4>Replies</h4>
-                  <DisplayReplies commentId={el.id} />
-                </div>
               </div>
-            );
-          }
-        })}
-      </div>
-      <div></div>
+              <hr/>
+              <div>
+                <DisplayReplies commentId={el.id} />
+              </div>
+            </div>
+          );
+        }
+      })}
     </div>
   );
 };

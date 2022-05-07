@@ -29,7 +29,7 @@ const Navbar = () => {
               {user ? (
                 <button onClick={logoutUser} className="buttons">Logout</button>
               ) : (
-                <button onClick={() => navigate("/login")} >Login</button>
+                <button className="buttons"onClick={() => navigate("/login")} >Login</button>
               )}{" "}
             </div>
           </div>
