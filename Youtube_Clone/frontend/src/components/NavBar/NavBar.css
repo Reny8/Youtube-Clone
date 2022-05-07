@@ -2,21 +2,23 @@ ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+  align-items: center
 }
 
 li {
   font-size: 1.25rem;
 }
 
-.navbar-button {
- margin-top: 0.5rem;
+.nav-buttons {
+   display: flex;
+   flex-direction: row;
+   margin-right: 1rem;
+}
+.home-button {
+ 
  margin-right: 1rem;
-
 }
 
-/* .navBar button {
-  padding: 0.4rem 0.5rem;
-} */
 .border-box {
   border-style: solid rgb(144, 143, 143);
   background-color: rgb(141, 134, 134);

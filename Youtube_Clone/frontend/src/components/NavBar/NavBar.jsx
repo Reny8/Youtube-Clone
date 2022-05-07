@@ -6,7 +6,6 @@ import "./NavBar.css";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
-  
 
   const navigate = useNavigate();
   return (
@@ -15,18 +14,28 @@ const Navbar = () => {
         <li>
           <h1>CatTube</h1>
         </li>
+
         <li>
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-          {user ? (
-            <button onClick={logoutUser}>Logout</button>
-          ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
-          )}
+          {" "}
+          <div className="nav-buttons">
+            <div className="home-button">
+              {" "}
+              <Link to="/">
+                <button>Home</button>
+              </Link>
+            </div>
+            <div>
+              {" "}
+              {user ? (
+                <button onClick={logoutUser}>Logout</button>
+              ) : (
+                <button onClick={() => navigate("/login")}>Login</button>
+              )}{" "}
+            </div>
+          </div>
         </li>
-        </ul>
-      </div>
+      </ul>
+    </div>
   );
 };
 
