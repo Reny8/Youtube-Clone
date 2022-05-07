@@ -14,9 +14,11 @@ li {
    flex-direction: row;
    margin-right: 1rem;
 }
-.home-button {
+.buttons {
  
  margin-right: 1rem;
+ color:darkred;
+ background-color: rgb(94,89,89);
 }
 
 .border-box {
@@ -24,3 +26,8 @@ li {
   background-color: rgb(141, 134, 134);
   box-shadow: 2px 2px 6px
 }
+
+img{
+  width: 6rem;
+}
+

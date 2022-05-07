@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import CatTube from "./CatTube.png";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
@@ -12,24 +13,23 @@ const Navbar = () => {
     <div className="border-box">
       <ul>
         <li>
-          <h1>CatTube</h1>
+          <img src={CatTube}/>
         </li>
-
         <li>
           {" "}
           <div className="nav-buttons">
-            <div className="home-button">
+            <div>
               {" "}
               <Link to="/">
-                <button>Home</button>
+                <button className="buttons">Home</button>
               </Link>
             </div>
             <div>
               {" "}
               {user ? (
-                <button onClick={logoutUser}>Logout</button>
+                <button onClick={logoutUser} className="buttons">Logout</button>
               ) : (
-                <button onClick={() => navigate("/login")}>Login</button>
+                <button onClick={() => navigate("/login")} >Login</button>
               )}{" "}
             </div>
           </div>

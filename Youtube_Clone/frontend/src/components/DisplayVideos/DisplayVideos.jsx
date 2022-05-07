@@ -8,23 +8,27 @@ const DisplayVideos = (props) => {
     <div>
       {" "}
      
-      <div className="flex-container">
+      <div >
         {props.videos.map((video, index) => {
           if (video.snippet) {
             return (
               <span key={index * 5}>
-                <div>
-                  <Link to={`/player/${video.id.videoId}`}>
-                    <div className="box">
+                <div className="card mb-3">
+                  <Link to={`/player/${video.id.videoId}`} style={{color: "darkred"}}>
+                    <div className="row g-0">
+                    <div className="col-md-4">
                       <input
                         type="image"
                         src={video.snippet.thumbnails.medium.url}
                         alt="Not Found"
                       />
-                      <div className="words">
-                        <h4>{video.snippet.title}</h4>
-                        <p>{video.snippet.description}</p>
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h4 className="card-title">{video.snippet.title}</h4>
+                        <p className="card-text">{video.snippet.description}</p>
                       </div>
+                    </div>
                     </div>
                   </Link>
                 </div>
