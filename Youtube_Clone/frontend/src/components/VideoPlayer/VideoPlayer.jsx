@@ -30,15 +30,11 @@ const VideoPlayer = (props) => {
 
   const addComment = async (addNew) => {
     try {
-      await axios.post(
-        "http://127.0.0.1:8000/api/comments/create/",
-        addNew,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      await axios.post("http://127.0.0.1:8000/api/comments/create/", addNew, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
       getComments();
     } catch (error) {
       console.log(addNew);
@@ -71,11 +67,7 @@ const VideoPlayer = (props) => {
         ></iframe>
         <div>
           {" "}
-          <CommentForm
-            videoId={videoId}
-            user={user}
-            addComment={addComment}
-          />
+          <CommentForm videoId={videoId} user={user} addComment={addComment} />
           <Comments
             user={user}
             addComment={addComment}
