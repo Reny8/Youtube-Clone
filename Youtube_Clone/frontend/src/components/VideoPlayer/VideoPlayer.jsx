@@ -11,7 +11,6 @@ const VideoPlayer = (props) => {
   const [user, token] = useAuth();
   const { videoId } = useParams();
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState({});
   const [related, setRelated] = useState([]);
 
   useEffect(() => {
@@ -29,11 +28,11 @@ const VideoPlayer = (props) => {
     }
   };
 
-  const addComment = async () => {
+  const addComment = async (addNew) => {
     try {
       await axios.post(
         "http://127.0.0.1:8000/api/comments/create/",
-        newComment,
+        addNew,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -42,7 +41,7 @@ const VideoPlayer = (props) => {
       );
       getComments();
     } catch (error) {
-      console.log(newComment);
+      console.log(addNew);
       console.log(error.message);
     }
   };
@@ -76,11 +75,9 @@ const VideoPlayer = (props) => {
             videoId={videoId}
             user={user}
             addComment={addComment}
-            setNewComment={setNewComment}
           />
           <Comments
             user={user}
-            setNewComment={setNewComment}
             addComment={addComment}
             getComments={getComments}
             comments={comments}

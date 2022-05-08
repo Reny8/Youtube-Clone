@@ -12,8 +12,7 @@ const CommentForm = (props) => {
       likes: 0,
       dislikes: 0,
     };
-    props.setNewComment(new_comment);
-    props.addComment();
+    props.addComment(new_comment);
     setCommentText(' ');
   }
   return (

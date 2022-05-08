@@ -6,22 +6,21 @@ import "./DisplayReplies.css";
 const DisplayReplies = (props) => {
   const [user, token] = useAuth();
   const [replies, setReplies] = useState([]);
-  const [newReply, setNewReply] = useState({});
 
   useEffect(() => {
     getReplies(props.commentId);
   }, []);
 
-  const addReply = async () => {
+  const addReply = async (new_answer) => {
     try {
-      await axios.post("http://127.0.0.1:8000/api/reply/", newReply, {
+      await axios.post("http://127.0.0.1:8000/api/reply/", new_answer, {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
       getReplies(props.commentId);
     } catch (error) {
-      console.log(newReply)
+      console.log(new_answer)
       console.log(error.message);
     }
   };
@@ -56,7 +55,6 @@ const DisplayReplies = (props) => {
         commentId={props.commentId}
         user={user}
         addReply={addReply}
-        setNewReply={setNewReply}
       />
     </div>
   );

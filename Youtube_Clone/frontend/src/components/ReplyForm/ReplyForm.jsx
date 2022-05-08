@@ -11,8 +11,7 @@ const ReplyForm = (props) => {
       user_id: props.user.id,
       comment_id: props.commentId,
     };
-    props.setNewReply(new_reply);
-    props.addReply();
+    props.addReply(new_reply);
     setText('');
   }
   return (
