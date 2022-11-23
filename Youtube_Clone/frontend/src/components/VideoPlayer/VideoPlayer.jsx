@@ -6,7 +6,7 @@ import axios from "axios";
 import { KEY } from "../../localKey";
 import useAuth from "../../hooks/useAuth";
 import CommentForm from "../CommentForm/CommentForm";
-
+import "./VideoPlayer.css"
 const VideoPlayer = (props) => {
   const [user, token] = useAuth();
   const { videoId } = useParams();
@@ -55,7 +55,7 @@ const VideoPlayer = (props) => {
 
   return (
     <div className="video-screen">
-      <div>
+      <div className="video-side">
         <iframe
           id="ytplayer"
           type="text/html"

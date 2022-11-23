@@ -29,3 +29,16 @@ link{
 #cardColor {
     background-color: rgb(141, 134, 134);
 }
+
+.card-body {
+    overflow-y: hidden;
+    height: 9rem;
+    padding: 1rem 4rem;
+}
+.image {
+    height: 86%;
+}
+.card {
+    height: 10.1rem;
+    width: 92%
+}
