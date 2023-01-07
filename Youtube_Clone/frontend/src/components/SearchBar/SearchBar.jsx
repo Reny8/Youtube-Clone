@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
+import axios from "axios"
+import { KEY } from "../../localKey";
 const SearchBar = (props) => {
   const [userInput, setUserInput] = useState("");
 
-  function handleClick() {
-    let response = props.videos.filter((video) => {
-      if (video.snippet.title.includes(userInput)) {
-        return true;
-      } else if (video.snippet.description.includes(userInput)) {
-        return true;
-      }
-    });
-    props.setVideos(response);
+ async function handleClick() {
+    try {
+      let response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/search?q=${userInput}&type=video&key=${KEY}&part=snippet&maxResults=6`
+      );
+      props.setVideos(response.data.items);
+    } catch (error) {
+      console.log(error.message);
+    }
     setUserInput("");
     if (userInput === "") {
       props.fetchVideos();
