@@ -23,6 +23,10 @@
   font-size: 17px;
 }
 
-.page {
+html body {
   background-color: rgb(94,89,89)
+}
+
+div.around-videos-home {
+  padding: 0rem 10rem 0rem 10rem
 }
