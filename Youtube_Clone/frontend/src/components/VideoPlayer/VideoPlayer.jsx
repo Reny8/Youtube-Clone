@@ -37,8 +37,7 @@ const VideoPlayer = (props) => {
       });
       getComments();
     } catch (error) {
-      console.log(addNew);
-      console.log(error.message);
+      alert("Sign up or Log in to add a comment");
     }
   };
 

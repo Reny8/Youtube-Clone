@@ -35,7 +35,7 @@ const LoginPage = () => {
         <label>
           Password:{" "}
           <input
-            type="text"
+            type="password"
             name="password"
             className="form-control"
             value={formData.password}

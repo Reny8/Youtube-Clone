@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 
 const CommentForm = (props) => {
-  const [commentText, setCommentText] = useState(' ');
+  const [commentText, setCommentText] = useState(" ");
 
   function handlesubmit(event) {
     event.preventDefault();
-    let new_comment = {
-      user: props.user.id,
-      video_id: props.videoId,
-      text: commentText,
-      likes: 0,
-      dislikes: 0,
-    };
-    props.addComment(new_comment);
-    setCommentText(' ');
+    if (props.user) {
+      let new_comment = {
+        user: props.user.id,
+        video_id: props.videoId,
+        text: commentText,
+        likes: 0,
+        dislikes: 0,
+      };
+      props.addComment(new_comment);
+    }
+    else{
+      alert("Sign in or Login to add a comment")
+    }
+    setCommentText(" ");
   }
   return (
-    <form onSubmit={handlesubmit}>
-     
+    <form className="comment-form" onSubmit={handlesubmit}>
       <input
         type="text"
         className="input-search"
